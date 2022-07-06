@@ -28,6 +28,7 @@ enum UVCProcessingUnit: Int, Selector {
     case analogVideoStandard = 0x11
     case analogLockStatus = 0x12
     case contrastAuto = 0x13
+    case trigger = 0x14 // TODO figure out what this is and how to set it
 
     func raw() -> Int {
         return self.rawValue

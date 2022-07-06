@@ -25,4 +25,5 @@ struct DeviceSettings: Codable {
     let tilt: Float
     let focusAuto: Bool
     let focus: Float
+    let trigger: Bool
 }

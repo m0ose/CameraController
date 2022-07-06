@@ -25,6 +25,7 @@ class DeviceController: ObservableObject {
     @Published var panTiltAbsolute: MultipleCaptureDeviceProperty
     @Published var focusAuto: BoolCaptureDeviceProperty
     @Published var focusAbsolute: NumberCaptureDeviceProperty
+    @Published var trigger: BoolCaptureDeviceProperty
 
     init?(properties: UVCDeviceProperties?) {
         guard let properties = properties else {
@@ -59,6 +60,9 @@ class DeviceController: ObservableObject {
         // Focus
         focusAuto = BoolCaptureDeviceProperty(properties.focusAuto)
         focusAbsolute = NumberCaptureDeviceProperty(properties.focusAbsolute)
+        
+        // trigger
+        trigger = BoolCaptureDeviceProperty(properties.trigger)
     }
 
     func writeValues() {
@@ -77,6 +81,7 @@ class DeviceController: ObservableObject {
         panTiltAbsolute.write()
         focusAuto.write()
         focusAbsolute.write()
+        trigger.write()
     }
 
     func getSettings() -> DeviceSettings {
@@ -95,7 +100,8 @@ class DeviceController: ObservableObject {
                               pan: self.panTiltAbsolute.sliderValue1,
                               tilt: self.panTiltAbsolute.sliderValue2,
                               focusAuto: self.focusAuto.isEnabled,
-                              focus: self.focusAbsolute.sliderValue)
+                              focus: self.focusAbsolute.sliderValue,
+                              trigger: self.trigger.isEnabled)
     }
 
     func set(_ deviceSettings: DeviceSettings) {
@@ -115,6 +121,7 @@ class DeviceController: ObservableObject {
         self.panTiltAbsolute.sliderValue2 = deviceSettings.tilt
         self.focusAuto.isEnabled = deviceSettings.focusAuto
         self.focusAbsolute.sliderValue = deviceSettings.focus
+        self.trigger.isEnabled = deviceSettings.trigger
     }
 
     func resetDefault() {
@@ -134,5 +141,6 @@ class DeviceController: ObservableObject {
         self.panTiltAbsolute.reset()
         self.focusAuto.reset()
         self.focusAbsolute.reset()
+        self.trigger.reset()
     }
 }

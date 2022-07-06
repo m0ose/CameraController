@@ -19,6 +19,7 @@ class UVCDeviceProperties {
     var zoomAbsolute: UVCIntControl
     var panTiltAbsolute: UVCMultipleIntControl
     var rollAbsolute: UVCIntControl
+    var trigger: UVCBoolControl
 
     var backlightCompensation: UVCIntControl
     var brightness: UVCIntControl
@@ -69,5 +70,6 @@ class UVCDeviceProperties {
                                      processingUnitId, interfaceId)
         whiteBalanceAuto = UVCBoolControl(interface, 1, UVCProcessingUnit.whiteBalanceTemperatureAuto,
                                           processingUnitId, interfaceId)
+        trigger = UVCBoolControl(interface,1, UVCProcessingUnit.trigger, processingUnitId, interfaceId)
     }
 }

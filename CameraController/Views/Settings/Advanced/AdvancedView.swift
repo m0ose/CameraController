@@ -17,6 +17,7 @@ struct AdvancedView: View {
             BacklightView(controller: controller)
             OrientationView(controller: controller)
             FocusView(controller: controller)
+            TriggerView(controller: controller)
         }
     }
 }
